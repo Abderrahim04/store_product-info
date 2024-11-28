@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notre Boutique</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="produits.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <a href="index.html">
+                <i class="fas fa-microchip logo-icon"></i>
+                Market<span class="tech">Tech</span>
+            </a>
+        </div>
+        <ul>
+            <li>
+                <a href="#accueil">
+                    <i class="fas fa-home"></i>
+                    Accueil
+                </a>
+            </li>
+            <li>
+                <a href="produits.html">
+                    <i class="fas fa-shopping-bag"></i>
+                    Produits
+                </a>
+            </li>
+            <li>
+                <a href="#contact">
+                    <i class="fas fa-envelope"></i>
+                    Contact
+                </a>
+            </li>
+        </ul>
+        <div class="nav-icons">
+            <div class="cart-icon">
+                <a href="panier.html" class="cart-trigger">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            <div class="profile-icon">
+                <a href="#" class="profile-trigger">
+                    <i class="fas fa-user"></i>
+                </a>
+                <div class="profile-dropdown">
+                    <a href="#profile">
+                        <i class="fas fa-user-circle"></i>
+                        Profile
+                    </a>
+                    <a href="#" class="dark-mode-toggle">
+                        <i class="fas fa-moon"></i>
+                        Mode Sombre
+                    </a>
+                    <a href="#" class="logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Déconnexion
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section Hero -->
+    <section id="accueil" class="hero">
+        <div class="hero-content" data-aos="fade-up">
+            <h1>Bienvenue dans notre boutique</h1>
+            <p>Découvrez nos produits exceptionnels</p>
+            <a href="produits.html" class="cta-button">
+                <i class="fas fa-shopping-cart"></i>
+                Voir nos produits
+            </a>
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <div class="contact-header" data-aos="fade-up">
+                <h2>Contactez-nous</h2>
+                <p>Nous sommes là pour vous aider</p>
+            </div>
+            
+            <div class="contact-wrapper">
+                <div class="contact-info" data-aos="fade-right">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Notre Adresse</h3>
+                        <p>123 Rue du Commerce, Ville, Pays</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3>Téléphone</h3>
+                        <p>+212 6XX-XXXXXX</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email</h3>
+                        <p>contact@markettech.com</p>
+                    </div>
+
+                    <div class="social-media">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="contact-form" data-aos="fade-left">
+                    <form>
+                        <div class="input-row">
+                            <div class="input-group">
+                                <input type="text" required>
+                                <label>Nom</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="email" required>
+                                <label>Email</label>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" required>
+                            <label>Sujet</label>
+                        </div>
+                        <div class="input-group">
+                            <textarea required></textarea>
+                            <label>Message</label>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            Envoyer
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 1000,
+        once: true
+    });
+
+    document.querySelectorAll('nav a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            
+            // Ne pas empêcher la navigation si c'est un lien vers une autre page
+            if (href.includes('.html')) {
+                return;
+            }
+            
+            e.preventDefault();
+            const targetSection = document.querySelector(href);
+            
+            targetSection.scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Toggle du menu profil
+    const profileTrigger = document.querySelector('.profile-trigger');
+    const profileIcon = document.querySelector('.profile-icon');
+
+    profileTrigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        profileIcon.classList.toggle('active');
+    });
+
+    // Fermer le menu si on clique ailleurs
+    document.addEventListener('click', (e) => {
+        if (!profileIcon.contains(e.target)) {
+            profileIcon.classList.remove('active');
+        }
+    });
+
+    // Toggle du mode sombre
+    const darkModeToggle = document.querySelector('.dark-mode-toggle');
+    darkModeToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.body.classList.toggle('dark-mode');
+        
+        // Change l'icône en fonction du mode
+        const icon = darkModeToggle.querySelector('i');
+        if (document.body.classList.contains('dark-mode')) {
+            icon.classList.replace('fa-moon', 'fa-sun');
+        } else {
+            icon.classList.replace('fa-sun', 'fa-moon');
+        }
+    });
+
+    // Supprimer ou commenter cette fonction car elle n'est plus nécessaire
+    /*
+    function scrollToProduits() {
+        const produitsSection = document.querySelector('#produits');
+        if (produitsSection) {
+            produitsSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    }
+    */
+</script>
+</html>
+

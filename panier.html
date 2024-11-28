@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panier - MarketTech</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="produits.css">
+    <link rel="stylesheet" href="panier.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <i class="fas fa-microchip logo-icon"></i>
+            Market<span class="tech">Tech</span>
+        </div>
+        <ul>
+            <li>
+                <a href="index.html">
+                    <i class="fas fa-home"></i>
+                    Accueil
+                </a>
+            </li>
+            <li>
+                <a href="produits.html">
+                    <i class="fas fa-shopping-bag"></i>
+                    Produits
+                </a>
+            </li>
+            <li>
+                <a href="index.html#contact">
+                    <i class="fas fa-envelope"></i>
+                    Contact
+                </a>
+            </li>
+        </ul>
+        <div class="nav-icons">
+            <div class="cart-icon">
+                <a href="panier.html" class="cart-trigger">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            <div class="profile-icon">
+                <a href="#" class="profile-trigger">
+                    <i class="fas fa-user"></i>
+                </a>
+                <div class="profile-dropdown">
+                    <a href="#profile">
+                        <i class="fas fa-user-circle"></i>
+                        Profile
+                    </a>
+                    <a href="#" class="dark-mode-toggle">
+                        <i class="fas fa-moon"></i>
+                        Mode Sombre
+                    </a>
+                    <a href="#" class="logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Déconnexion
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section Panier -->
+    <section class="cart-section">
+        <div class="cart-container" data-aos="fade-up">
+            <h1>Mon Panier</h1>
+            <div id="cart-items" class="cart-items">
+                <!-- Les articles seront ajoutés ici dynamiquement -->
+            </div>
+            
+            <div class="cart-summary">
+                <h2 class="summary-title">Résumé de la commande</h2>
+                <div class="summary-item">
+                    <span>Sous-total</span>
+                    <span id="subtotal">0 €</span>
+                </div>
+                <div class="summary-item">
+                    <span>Livraison</span>
+                    <span>Gratuite</span>
+                </div>
+                <div class="summary-item summary-total">
+                    <span>Total</span>
+                    <span id="total">0 €</span>
+                </div>
+                <button class="clear-cart-btn">
+                    Vider le panier
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+                <button class="checkout-btn">
+                    Procéder au paiement
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Toggle du menu profil
+        const profileTrigger = document.querySelector('.profile-trigger');
+        const profileIcon = document.querySelector('.profile-icon');
+
+        profileTrigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            profileIcon.classList.toggle('active');
+        });
+
+        // Fermer le menu si on clique ailleurs
+        document.addEventListener('click', (e) => {
+            if (!profileIcon.contains(e.target)) {
+                profileIcon.classList.remove('active');
+            }
+        });
+
+        // Toggle du mode sombre
+        const darkModeToggle = document.querySelector('.dark-mode-toggle');
+        darkModeToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.body.classList.toggle('dark-mode');
+            
+            const icon = darkModeToggle.querySelector('i');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+            }
+        });
+
+        function displayCart() {
+            const cartContainer = document.getElementById('cart-items');
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            if (cart.length === 0) {
+                cartContainer.innerHTML = `
+                    <div class="empty-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <p>Votre panier est vide</p>
+                        <a href="produits.html" class="cta-button">
+                            Continuer vos achats
+                        </a>
+                    </div>
+                `;
+                return;
+            }
+
+            let cartHTML = '';
+            let total = 0;
+
+            cart.forEach(item => {
+                const price = parseFloat(item.price);
+                const itemTotal = price * item.quantity;
+                total += itemTotal;
+
+                cartHTML += `
+                    <div class="cart-item" data-id="${item.id}">
+                        <div class="cart-item-image">
+                            <img src="${item.image}" alt="${item.name}">
+                        </div>
+                        <div class="cart-item-details">
+                            <h3 class="cart-item-name">${item.name}</h3>
+                            <p class="cart-item-price">${item.price}</p>
+                            <div class="cart-item-quantity">
+                                <button class="quantity-btn minus" onclick="updateQuantity(${item.id}, -1)">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <span class="quantity-value">${item.quantity}</span>
+                                <button class="quantity-btn plus" onclick="updateQuantity(${item.id}, 1)">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <i class="fas fa-times cart-item-remove" onclick="removeItem(${item.id})"></i>
+                    </div>
+                `;
+            });
+
+            cartContainer.innerHTML = cartHTML;
+            updateTotal();
+        }
+
+        function updateQuantity(id, change) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const item = cart.find(item => item.id === id);
+            
+            if (item) {
+                item.quantity = Math.max(1, item.quantity + change);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                displayCart();
+                updateCartCount();
+            }
+        }
+
+        function removeItem(id) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart = cart.filter(item => item.id !== id);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+            updateCartCount();
+        }
+
+        function updateTotal() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const total = cart.reduce((sum, item) => {
+                const price = parseFloat(item.price);
+                return sum + (price * item.quantity);
+            }, 0);
+
+            document.getElementById('subtotal').textContent = `${total.toFixed(2)} €`;
+            document.getElementById('total').textContent = `${total.toFixed(2)} €`;
+        }
+
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            document.querySelector('.cart-count').textContent = totalItems;
+        }
+
+        function clearCart() {
+            localStorage.removeItem('cart');
+            displayCart();
+            updateCartCount();
+        }
+
+        // Ajoutez un écouteur d'événement pour le bouton "Vider le panier"
+        document.querySelector('.clear-cart-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            clearCart();
+        });
+
+        // Initialiser l'affichage du panier
+        displayCart();
+        updateCartCount();
+    </script>
+</body>
+</html> 

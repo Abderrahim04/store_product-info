@@ -1,0 +1,419 @@
+.products-section {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.products-section h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.filter-btn.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-3px);
+}
+
+.product-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.product-card:hover .product-overlay {
+    opacity: 1;
+}
+
+.product-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 80%;
+}
+
+.add-to-cart, .buy-now {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.add-to-cart {
+    background-color: #007bff;
+    color: white;
+}
+
+.buy-now {
+    background-color: #28a745;
+    color: white;
+}
+
+.add-to-cart:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.buy-now:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-info h3 {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.price {
+    font-size: 1.2em;
+    color: #007bff;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.rating {
+    display: flex;
+    gap: 2px;
+    color: #ffd700;
+}
+
+/* Mode sombre */
+.dark-mode .products-section h1 {
+    color: #fff;
+}
+
+.dark-mode .product-card {
+    background: #2a2a2a;
+}
+
+.dark-mode .product-info h3 {
+    color: #fff;
+}
+
+.dark-mode .add-to-cart {
+    background-color: #0056b3;
+}
+
+.dark-mode .buy-now {
+    background-color: #218838;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .filters {
+        flex-wrap: wrap;
+    }
+    
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.1);
+}
+
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.cart-icon {
+    position: relative;
+    padding-right: 20px;
+    border-right: 2px solid #e0e0e0;
+}
+
+.cart-icon a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+.cart-icon a:hover {
+    color: #007bff;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: 8px;
+    background: #007bff;
+    color: white;
+    font-size: 12px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* Ajuster pour le mode sombre */
+body.dark-mode .cart-icon a {
+    color: #fff;
+}
+
+body.dark-mode .cart-icon {
+    border-right-color: #444;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-icons {
+        margin-top: 15px;
+    }
+}
+
+/* Style de la barre de recherche */
+.search-container {
+    max-width: 600px;
+    margin: 0 auto 30px;
+    padding: 0 20px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 50px;
+    padding: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.search-box:focus-within {
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+#search-input {
+    flex: 1;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1em;
+    outline: none;
+    background: transparent;
+    border-radius: 50px;
+}
+
+.search-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+    background: #0056b3;
+}
+
+/* Mode sombre */
+.dark-mode .search-box {
+    background: #2a2a2a;
+}
+
+.dark-mode #search-input {
+    color: white;
+}
+
+.dark-mode #search-input::placeholder {
+    color: #aaa;
+}
+
+/* Modifier les styles de la notification */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #4CAF50;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease;
+    transform: translate(-50%, 100%);
+}
+
+.notification.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+}
+
+.notification i {
+    font-size: 1.2em;
+    color: white;
+}
+
+/* Style amélioré pour la notification */
+.notification {
+    background: linear-gradient(45deg, #4CAF50, #45a049);
+    font-weight: 500;
+    padding: 15px 30px;
+    border-radius: 50px;
+    box-shadow: 0 4px 20px rgba(76, 175, 80, 0.3);
+}
+
+/* Mode sombre */
+.dark-mode .notification {
+    background: linear-gradient(45deg, #2d5a30, #1e3e21);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .notification {
+        width: 90%;
+        text-align: center;
+        justify-content: center;
+        bottom: 30px;
+    }
+}
+
+/* Ajouter ces styles pour la navbar en mode sombre */
+.dark-mode nav {
+    background: #1a1a1a;  /* Fond sombre pour la navbar */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode nav .logo {
+    color: #fff;
+}
+
+.dark-mode nav .tech {
+    color: #007bff;  /* Garder la couleur bleue pour l'accent */
+}
+
+.dark-mode nav ul li a {
+    color: #fff;
+}
+
+.dark-mode nav ul li a:hover {
+    background: #333;
+}
+
+.dark-mode .nav-icons {
+    color: #fff;
+}
+
+.dark-mode .profile-dropdown {
+    background: #2a2a2a;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .profile-dropdown a {
+    color: #fff;
+}
+
+.dark-mode .profile-dropdown a:hover {
+    background: #333;
+}
+
+.dark-mode .cart-icon a {
+    color: #fff;
+}
+
+.dark-mode .cart-icon {
+    border-right-color: #444;
+}
+
+.dark-mode .profile-icon a {
+    color: #fff;
+}
+
+/* Ajuster les icônes dans le mode sombre */
+.dark-mode nav i {
+    color: #fff;
+}
+
+/* Hover effects en mode sombre */
+.dark-mode nav ul li a:hover i,
+.dark-mode .cart-icon a:hover,
+.dark-mode .profile-icon a:hover {
+    color: #007bff;
+}

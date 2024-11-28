@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Produits - MarketTech</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/solid.min.css">
+    <link rel="stylesheet" href="produits.css">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style">
+</head>
+<body>
+    <!-- Ajouter ceci juste après l'ouverture du body -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span>Produit ajouté au panier!</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <i class="fas fa-microchip logo-icon"></i>
+            Market<span class="tech">Tech</span>
+        </div>
+        <ul>
+            <li>
+                <a href="index.html">
+                    <i class="fas fa-home"></i>
+                    Accueil
+                </a>
+            </li>
+            <li>
+                <a href="produits.html">
+                    <i class="fas fa-shopping-bag"></i>
+                    Produits
+                </a>
+            </li>
+            <li>
+                <a href="index.html#contact">
+                    <i class="fas fa-envelope"></i>
+                    Contact
+                </a>
+            </li>
+        </ul>
+        <div class="nav-icons">
+            <div class="cart-icon">
+                <a href="panier.html" class="cart-trigger">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            <div class="profile-icon">
+                <a href="#" class="profile-trigger">
+                    <i class="fas fa-user"></i>
+                </a>
+                <div class="profile-dropdown">
+                    <a href="#profile">
+                        <i class="fas fa-user-circle"></i>
+                        Profile
+                    </a>
+                    <a href="#" class="dark-mode-toggle">
+                        <i class="fas fa-moon"></i>
+                        Mode Sombre
+                    </a>
+                    <a href="#" class="logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Déconnexion
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section Produits -->
+    <section class="products-section">
+        <h1 data-aos="fade-up">Nos Produits</h1>
+        
+        <!-- Filtres -->
+        <div class="filters" data-aos="fade-up">
+            <button class="filter-btn active" data-category="tous">Tous</button>
+            <button class="filter-btn" data-category="ordinateurs">Ordinateurs</button>
+            <button class="filter-btn" data-category="smartphones">Smartphones</button>
+            <button class="filter-btn" data-category="accessoires">Accessoires</button>
+        </div>
+
+        <!-- Ajouter après le titre et avant les filtres -->
+        <div class="search-container" data-aos="fade-up">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Rechercher un produit...">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Grille de produits -->
+        <div class="products-grid">
+            <!-- Ordinateurs -->
+            <div class="product-card" data-aos="fade-up" data-aos-delay="0" data-category="ordinateurs">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=compress&q=80&w=800" alt="MacBook Pro" loading="lazy">
+                    <div class="product-overlay">
+                        <div class="product-buttons">
+                            <button class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                                Ajouter au panier
+                            </button>
+                            <button class="buy-now">
+                                <i class="fas fa-credit-card"></i>
+                                Acheter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>MacBook Pro M1</h3>
+                    <p class="price">1299 €</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-aos="fade-up" data-aos-delay="0" data-category="ordinateurs">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45" alt="Dell XPS" loading="lazy">
+                    <div class="product-overlay">
+                        <div class="product-buttons">
+                            <button class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                                Ajouter au panier
+                            </button>
+                            <button class="buy-now">
+                                <i class="fas fa-credit-card"></i>
+                                Acheter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Dell XPS 13</h3>
+                    <p class="price">999 €</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Smartphones -->
+            <div class="product-card" data-aos="fade-up" data-aos-delay="0" data-category="smartphones">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab" alt="iPhone 14" loading="lazy">
+                    <div class="product-overlay">
+                        <div class="product-buttons">
+                            <button class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                                Ajouter au panier
+                            </button>
+                            <button class="buy-now">
+                                <i class="fas fa-credit-card"></i>
+                                Acheter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>iPhone 14 Pro</h3>
+                    <p class="price">1099 €</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-aos="fade-up" data-aos-delay="0" data-category="smartphones">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf" alt="Samsung S23" loading="lazy">
+                    <div class="product-overlay">
+                        <div class="product-buttons">
+                            <button class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                                Ajouter au panier
+                            </button>
+                            <button class="buy-now">
+                                <i class="fas fa-credit-card"></i>
+                                Acheter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Samsung Galaxy S23</h3>
+                    <p class="price">899 €</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accessoires -->
+            <div class="product-card" data-aos="fade-up" data-aos-delay="0" data-category="accessoires">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e" alt="Casque Audio" loading="lazy">
+                    <div class="product-overlay">
+                        <div class="product-buttons">
+                            <button class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                                Ajouter au panier
+                            </button>
+                            <button class="buy-now">
+                                <i class="fas fa-credit-card"></i>
+                                Acheter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>AirPods Max</h3>
+                    <p class="price">549 €</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-aos="fade-up" data-aos-delay="0" data-category="accessoires">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1579586337278-3befd40fd17a" alt="Apple Watch" loading="lazy">
+                    <div class="product-overlay">
+                        <div class="product-buttons">
+                            <button class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                                Ajouter au panier
+                            </button>
+                            <button class="buy-now">
+                                <i class="fas fa-credit-card"></i>
+                                Acheter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Apple Watch Series 8</h3>
+                    <p class="price">399 €</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ordinateurs supplémentaires -->
+            <div class="product-card" data-aos="fade-up" data-aos-delay="0" data-category="ordinateurs">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef" alt="Lenovo ThinkPad" loading="lazy">
+                    <div class="product-overlay">
+                        <div class="product-buttons">
+                            <button class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                                Ajouter au panier
+                            </button>
+                            <button class="buy-now">
+                                <i class="fas fa-credit-card"></i>
+                                Acheter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Lenovo ThinkPad X1</h3>
+                    <p class="price">1199 €</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-aos="fade-up" data-aos-delay="0" data-category="ordinateurs">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853" alt="HP Spectre" loading="lazy">
+                    <div class="product-overlay">
+                        <div class="product-buttons">
+                            <button class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                                Ajouter au panier
+                            </button>
+                            <button class="buy-now">
+                                <i class="fas fa-credit-card"></i>
+                                Acheter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>HP Spectre x360</h3>
+                    <p class="price">1399 €</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Smartphones supplémentaires -->
+            <div class="product-card" data-aos="fade-up" data-aos-delay="0" data-category="smartphones">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97" alt="Google Pixel" loading="lazy">
+                    <div class="product-overlay">
+                        <div class="product-buttons">
+                            <button class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                                Ajouter au panier
+                            </button>
+                            <button class="buy-now">
+                                <i class="fas fa-credit-card"></i>
+                                Acheter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Google Pixel 7 Pro</h3>
+                    <p class="price">899 €</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-aos="fade-up" data-aos-delay="0" data-category="smartphones">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1676315527368-bc0aa1af2c8f" alt="OnePlus" loading="lazy">
+                    <div class="product-overlay">
+                        <div class="product-buttons">
+                            <button class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                                Ajouter au panier
+                            </button>
+                            <button class="buy-now">
+                                <i class="fas fa-credit-card"></i>
+                                Acheter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>OnePlus 11</h3>
+                    <p class="price">799 €</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accessoires supplémentaires -->
+            <div class="product-card" data-aos="fade-up" data-aos-delay="0" data-category="accessoires">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb" alt="Souris Gaming" loading="lazy">
+                    <div class="product-overlay">
+                        <div class="product-buttons">
+                            <button class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                                Ajouter au panier
+                            </button>
+                            <button class="buy-now">
+                                <i class="fas fa-credit-card"></i>
+                                Acheter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Logitech G Pro X</h3>
+                    <p class="price">129 €</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-aos="fade-up" data-aos-delay="0" data-category="accessoires">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1593121925328-369cc8459c08" alt="Clavier Mécanique" loading="lazy">
+                    <div class="product-overlay">
+                        <div class="product-buttons">
+                            <button class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                                Ajouter au panier
+                            </button>
+                            <button class="buy-now">
+                                <i class="fas fa-credit-card"></i>
+                                Acheter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Razer BlackWidow V3</h3>
+                    <p class="price">179 €</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 500,
+            once: true,
+            throttleDelay: 100,
+            disable: 'mobile'
+        });
+
+        // Toggle du menu profil
+        const profileTrigger = document.querySelector('.profile-trigger');
+        const profileIcon = document.querySelector('.profile-icon');
+
+        profileTrigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            profileIcon.classList.toggle('active');
+        });
+
+        // Fermer le menu si on clique ailleurs
+        document.addEventListener('click', (e) => {
+            if (!profileIcon.contains(e.target)) {
+                profileIcon.classList.remove('active');
+            }
+        });
+
+        // Toggle du mode sombre
+        const darkModeToggle = document.querySelector('.dark-mode-toggle');
+        darkModeToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.body.classList.toggle('dark-mode');
+            
+            // Change l'icône en fonction du mode
+            const icon = darkModeToggle.querySelector('i');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+            }
+        });
+
+        // Filtrage des produits
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const products = document.querySelectorAll('.product-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Retirer la classe active de tous les boutons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Ajouter la classe active au bouton cliqué
+                button.classList.add('active');
+
+                const category = button.dataset.category;
+
+                products.forEach(product => {
+                    if (category === 'tous' || product.dataset.category === category) {
+                        product.style.display = 'block';
+                    } else {
+                        product.style.display = 'none';
+                    }
+                });
+            });
+        });
+        // Fonction de recherche
+const searchInput = document.getElementById('search-input');
+const productCards = document.querySelectorAll('.product-card');
+
+searchInput.addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase().trim();
+
+    productCards.forEach(card => {
+        const productName = card.querySelector('h3').textContent.toLowerCase();
+        const productCategory = card.dataset.category.toLowerCase();
+        
+        if (productName.includes(searchTerm) || productCategory.includes(searchTerm)) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+
+    // Si la recherche est vide, afficher tous les produits
+    if (searchTerm === '') {
+        const activeCategory = document.querySelector('.filter-btn.active').dataset.category;
+        productCards.forEach(card => {
+            if (activeCategory === 'tous' || card.dataset.category === activeCategory) {
+                card.style.display = 'block';
+            }
+        });
+    }
+});
+
+// Réinitialiser la recherche quand on change de catégorie
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        searchInput.value = '';
+    });
+});
+// Ajouter ce JavaScript à la fin du fichier, avant </body>
+// Fonction pour gérer l'ajout au panier
+function addToCart(button) {
+    const productCard = button.closest('.product-card');
+    const productData = {
+        id: Date.now(), // Identifiant unique
+        name: productCard.querySelector('h3').textContent,
+        price: productCard.querySelector('.price').textContent,
+        image: productCard.querySelector('img').src,
+        quantity: 1
+    };
+
+    // Récupérer le panier existant ou créer un nouveau
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    // Vérifier si le produit existe déjà
+    const existingProduct = cart.find(item => item.name === productData.name);
+    if (existingProduct) {
+        existingProduct.quantity += 1;
+    } else {
+        cart.push(productData);
+    }
+
+    // Sauvegarder le panier
+    localStorage.setItem('cart', JSON.stringify(cart));
+    
+    // Mettre à jour le compteur
+    updateCartCount();
+    
+    // Afficher la notification
+    showNotification();
+}
+
+function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+    document.querySelector('.cart-count').textContent = totalItems;
+}
+
+// Ajouter les écouteurs d'événements
+document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', (e) => {
+        e.preventDefault();
+        addToCart(button);
+    });
+});
+
+// Mettre à jour le compteur au chargement de la page
+updateCartCount();
+    </script>
+</body>
+</html>
